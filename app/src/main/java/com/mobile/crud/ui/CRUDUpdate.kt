@@ -20,14 +20,14 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import com.mobile.crud.domain.CRUDProject
-import com.mobile.crud.domain.CRUDProjectDAO
+import com.mobile.crud.domain.CRUDProjectData
 import java.time.LocalDate
 import java.util.*
 
 @RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun CRUDUpdateScreen(crudId: Int, getById: (Int) -> CRUDProject, updateProject: (Int, CRUDProjectDAO) -> Unit, navigateBack: () -> Unit) {
+fun CRUDUpdateScreen(crudId: Int, getById: (Int) -> CRUDProject, updateProject: (Int, CRUDProjectData) -> Unit, navigateBack: () -> Unit) {
     Card(
         modifier = Modifier
             .padding(horizontal = 8.dp, vertical = 8.dp)
@@ -133,7 +133,7 @@ fun CRUDUpdateScreen(crudId: Int, getById: (Int) -> CRUDProject, updateProject: 
             Button(
                 onClick = {
                     updateProject(crudId,
-                        CRUDProjectDAO(
+                        CRUDProjectData(
                         title = projectName.text,
                         description = description.text,
                         course = courseName.text,

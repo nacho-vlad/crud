@@ -2,7 +2,6 @@ package com.mobile.crud.ui
 
 import android.app.DatePickerDialog
 import android.os.Build
-import android.widget.CalendarView
 import androidx.compose.ui.graphics.Color
 import android.widget.DatePicker
 import androidx.annotation.RequiresApi
@@ -21,21 +20,16 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.graphics.Color.Companion.Magenta
-import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.viewinterop.AndroidView
-import com.mobile.crud.domain.CRUDProject
-import com.mobile.crud.domain.CRUDProjectDAO
+import com.mobile.crud.domain.CRUDProjectData
 import java.time.LocalDate
-import java.time.LocalDateTime
 import java.util.*
 
 @RequiresApi(Build.VERSION_CODES.O)
 @ExperimentalMaterial3Api
 @Composable
-fun CRUDAddScreen(addProject: (CRUDProjectDAO) -> Unit, navigateBack: () -> Unit) {
+fun CRUDAddScreen(addProject: (CRUDProjectData) -> Unit, navigateBack: () -> Unit) {
     Card(
         modifier = Modifier
             .padding(horizontal = 8.dp, vertical = 8.dp)
@@ -149,7 +143,7 @@ fun CRUDAddScreen(addProject: (CRUDProjectDAO) -> Unit, navigateBack: () -> Unit
 
             Button(
                 onClick = {
-                    addProject(CRUDProjectDAO(
+                    addProject(CRUDProjectData(
                         title = projectName.text,
                         description = description.text,
                         course = courseName.text,

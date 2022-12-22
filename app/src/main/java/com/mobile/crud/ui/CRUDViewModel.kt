@@ -2,10 +2,9 @@ package com.mobile.crud.ui
 
 import androidx.lifecycle.ViewModel
 import com.mobile.crud.domain.CRUDProject
-import com.mobile.crud.domain.CRUDProjectDAO
+import com.mobile.crud.domain.CRUDProjectData
 import com.mobile.crud.repository.MemoryRepository
 import com.mobile.crud.repository.Repository
-import kotlinx.coroutines.flow.filter
 
 class CRUDViewModel(
 ) : ViewModel() {
@@ -16,11 +15,11 @@ class CRUDViewModel(
         repository.deleteCRUD(crudId)
     }
 
-    fun addProject(crud: CRUDProjectDAO) {
+    fun addProject(crud: CRUDProjectData) {
         repository.addCRUD(crud)
     }
 
-    fun updateProject(crudId: Int, crud: CRUDProjectDAO) {
+    fun updateProject(crudId: Int, crud: CRUDProjectData) {
         repository.updateCRUD(crudId, crud)
     }
 

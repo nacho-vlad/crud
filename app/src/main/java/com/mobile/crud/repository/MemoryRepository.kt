@@ -1,7 +1,7 @@
 package com.mobile.crud.repository
 
 import com.mobile.crud.domain.CRUDProject
-import com.mobile.crud.domain.CRUDProjectDAO
+import com.mobile.crud.domain.CRUDProjectData
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.update
 class MemoryRepository: Repository {
     private val list = MutableStateFlow(DataProvider.crudList);
     var id = 100;
-    override fun addCRUD(crud: CRUDProjectDAO) {
+    override fun addCRUD(crud: CRUDProjectData) {
         id += 1
         list.update { old -> old + CRUDProject(
             id = id,
@@ -30,7 +30,7 @@ class MemoryRepository: Repository {
         return list.asStateFlow();
     }
 
-    override fun updateCRUD(crudId: Int, newCrud: CRUDProjectDAO) {
+    override fun updateCRUD(crudId: Int, newCrud: CRUDProjectData) {
         list.update { old ->
             old.map { crud ->
                 if (crud.id != crudId) {
